@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>ex1</h1>
+<h3>[[${list}]]</h3>
+<h3 th:text="${list}"></h3>
+
+<div>
+  <h2>링크 test</h2>
+  <a th:href="@{/view(keyword=${list}, nmae='dddd')}"></a>
+</div>
+
+<!--/*  thymeleaf 주석처리 */-->
+<div th:with="num=${10}, num2=${20}">
+  <h1>[[${num + num2}]]</h1>
+</div>
+<!--/* [[${status.index}]] 0번부터 [[${status.count}]] 1번부터 */-->
+<ul>
+  <li th:each="str , status : ${list}">[[${status.index}]] ------  [[${str}]]</li>
+</ul>
+
+<ul>
+  <th:block th:each="str, status :${list}">
+    <li th:text="${status.odd} ? 'odd ---' + ${str}"></li>
+  </th:block>
+</ul>
+</body>
+</html>
